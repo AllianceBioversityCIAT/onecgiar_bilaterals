@@ -11,7 +11,7 @@ COPY angular.json ./
 COPY tsconfig*.json ./
 COPY .browserslistrc ./
 COPY public ./public
-COPY eslint.config.mjs ./
+COPY eslint.config.js ./
 
 # Build in dev mode as per team requirement
 RUN npm run build
@@ -29,7 +29,7 @@ COPY angular.json ./
 COPY tsconfig*.json ./
 COPY .browserslistrc ./
 COPY public ./public
-COPY eslint.config.mjs ./
+COPY eslint.config.js ./
 
 # Run tests (adjust the script if needed)
 CMD ["npm", "run", "test:coverage"]
