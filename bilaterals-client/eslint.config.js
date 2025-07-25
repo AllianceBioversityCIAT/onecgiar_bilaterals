@@ -49,16 +49,16 @@ export default typescriptEslint.config(
                 {
                     type: 'attribute',
                     prefix: 'app',
-                    style: 'camelCase',
-                },
+                    style: 'camelCase'
+                }
             ],
             '@angular-eslint/component-selector': [
                 'error',
                 {
                     type: 'element',
                     prefix: 'app',
-                    style: 'kebab-case',
-                },
+                    style: 'kebab-case'
+                }
             ],
             '@angular-eslint/prefer-standalone': 'warn',
             '@angular-eslint/prefer-signals': 'warn',
@@ -82,8 +82,8 @@ export default typescriptEslint.config(
             // General best practices for Angular 20
             'prefer-const': 'error',
             'no-var': 'error',
-            'no-console': ['warn', { allow: ['warn', 'error'] }],
-            'no-debugger': 'error',
+            'no-console': ['error', { allow: ['warn', 'error'] }],
+            'no-debugger': 'error'
         },
     },
 
@@ -102,7 +102,7 @@ export default typescriptEslint.config(
             '@angular-eslint/template/cyclomatic-complexity': ['error', { maxComplexity: 5 }],
             '@angular-eslint/template/no-any': 'warn',
             '@angular-eslint/template/no-duplicate-attributes': 'error',
-            '@angular-eslint/template/prefer-self-closing-tags': 'warn',
+            '@angular-eslint/template/prefer-self-closing-tags': 'warn'
         },
     },
 
@@ -113,7 +113,7 @@ export default typescriptEslint.config(
             // Relaxed rules for test files
             '@typescript-eslint/no-explicit-any': 'off',
             '@typescript-eslint/no-non-null-assertion': 'off',
-            'no-console': 'off',
+            'no-console': 'off'
         },
     }
 );
