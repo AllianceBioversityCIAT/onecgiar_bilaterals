@@ -12,6 +12,7 @@ RUN npm install --ignore-scripts && npm install --ignore-scripts --save-dev @typ
 COPY src ./src
 COPY tsconfig*.json ./
 COPY nest-cli.json ./
+COPY eslint.config.mjs ./
 
 RUN npm run build
 
@@ -24,6 +25,7 @@ RUN npm ci --only=production --ignore-scripts
 COPY src ./src
 COPY tsconfig*.json ./
 COPY nest-cli.json ./
+COPY eslint.config.mjs ./
 
 RUN npm run build
 
