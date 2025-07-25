@@ -9,7 +9,6 @@ RUN npm ci --ignore-scripts
 COPY src ./src
 COPY angular.json ./
 COPY tsconfig*.json ./
-COPY .browserslistrc ./
 COPY public ./public
 COPY eslint.config.js ./
 
@@ -27,7 +26,6 @@ RUN npm ci --ignore-scripts
 COPY src ./src
 COPY angular.json ./
 COPY tsconfig*.json ./
-COPY .browserslistrc ./
 COPY public ./public
 COPY eslint.config.js ./
 
