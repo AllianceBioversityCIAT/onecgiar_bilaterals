@@ -74,13 +74,13 @@ jobs:
             --output text | tee src/environments/environment.ts > src/environments/environment.prod.ts
         working-directory: ./bilaterals-client
 
-      # Step 9: Install backend dependencies
-      - name: Install backend dependencies
+      # Step 9: Install frontend dependencies
+      - name: Install frontend dependencies
         run: npm ci
         working-directory: ./bilaterals-client
 
-      # Step 10: Build backend
-      - name: Build backend
+      # Step 10: Build frontend
+      - name: Build frontend
         run: npm run build
         working-directory: ./bilaterals-client
 

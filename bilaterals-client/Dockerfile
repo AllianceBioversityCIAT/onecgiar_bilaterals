@@ -4,9 +4,14 @@ FROM node:20-alpine AS build
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 
-COPY . .
+COPY src ./src
+COPY angular.json ./
+COPY tsconfig*.json ./
+COPY .browserslistrc ./
+COPY public ./public
+COPY eslint.config.mjs ./
 
 # Build in dev mode as per team requirement
 RUN npm run build
@@ -17,9 +22,14 @@ FROM node:20-alpine AS test
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --ignore-scripts
 
-COPY . .
+COPY src ./src
+COPY angular.json ./
+COPY tsconfig*.json ./
+COPY .browserslistrc ./
+COPY public ./public
+COPY eslint.config.mjs ./
 
 # Run tests (adjust the script if needed)
 CMD ["npm", "run", "test:coverage"]
