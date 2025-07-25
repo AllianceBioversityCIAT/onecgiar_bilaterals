@@ -65,6 +65,25 @@ jobs:
         run: npm run build
         working-directory: ./bilaterals-server
 
+      - name: Load frontend environments from AWS Secrets Manager
+        run: |
+          mkdir -p src/environments
+          aws secretsmanager get-secret-value \
+            --secret-id dev/app/frontend/prms/bilateral \
+            --query SecretString \
+            --output text | tee src/environments/environment.ts > src/environments/environment.prod.ts
+        working-directory: ./onecgiar-pr-client
+
+      # Step 9: Install backend dependencies
+      - name: Install backend dependencies
+        run: npm ci
+        working-directory: ./bilaterals-client
+
+      # Step 10: Build backend
+      - name: Build backend
+        run: npm run build
+        working-directory: ./bilaterals-client
+
       # Step 10: Install SonarScanner globally
       - name: Install SonarScanner
         run: npm install -g sonar-scanner
@@ -80,6 +99,6 @@ jobs:
             -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/migrations/**,**/*.spec.ts \
             -Dsonar.coverage.exclusions=** \
             -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
-        working-directory: ./bilaterals-server
+        working-directory: .
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
