@@ -6,11 +6,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --ignore-scripts
 
-COPY src ./src
-COPY angular.json ./
-COPY tsconfig*.json ./
-COPY public ./public
-COPY eslint.config.js ./
+COPY . .
 
 # Build in dev mode as per team requirement
 RUN npm run build
@@ -23,11 +19,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm ci --ignore-scripts
 
-COPY src ./src
-COPY angular.json ./
-COPY tsconfig*.json ./
-COPY public ./public
-COPY eslint.config.js ./
+COPY . .
 
 # Run tests (adjust the script if needed)
 CMD ["npm", "run", "test:coverage"]
