@@ -9,7 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "eslint src/ --fix",
+    "lint": "eslint src/",
     "lint:check": "eslint src/",
     "format": "prettier --write \"src/**/*.{ts,html,scss,css,js,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,css,js,json}\"",
