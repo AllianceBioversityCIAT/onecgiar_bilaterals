@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import  Bilaterals  from './bilaterals';
+import Bilaterals from './bilaterals';
+import { ActivatedRoute } from '@angular/router';
 
 describe('Bilaterals', () => {
   let component: Bilaterals;
@@ -8,9 +9,9 @@ describe('Bilaterals', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Bilaterals]
-    })
-    .compileComponents();
+      imports: [Bilaterals],
+      providers: [{ provide: ActivatedRoute, useValue: {} }]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Bilaterals);
     component = fixture.componentInstance;
