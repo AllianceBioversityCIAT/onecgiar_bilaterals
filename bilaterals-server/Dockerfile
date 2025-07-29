@@ -1,5 +1,5 @@
 #################### BASE STAGE ####################
-FROM node:20.13.1-alpine AS base
+FROM node:22-alpine AS base
 
 WORKDIR /app
 COPY package*.json ./
@@ -20,6 +20,7 @@ CMD ["npm", "run", "start"]
 
 #################### BUILD STAGE ####################
 FROM base AS build
+
 RUN npm ci --only=production --ignore-scripts
 
 COPY src ./src
@@ -30,7 +31,7 @@ COPY eslint.config.mjs ./
 RUN npm run build
 
 #################### PRODUCTION STAGE ####################
-FROM --platform=linux/amd64 node:20.13.1-alpine AS production
+FROM --platform=linux/amd64 node:22-alpine AS production
 
 WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup

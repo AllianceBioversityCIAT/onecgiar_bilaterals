@@ -6,14 +6,14 @@ on:
       - dev
       - staging
       - main
-  workflow_dispatch: # Permite ejecución manual
+  workflow_dispatch: # Allows manual execution
 
 jobs:
   trigger-job:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Obtener la rama y construir URL de Jenkins
+      # Step 1: Get the branch and build Jenkins URL
       - name: Get branch name and build Jenkins URL
         run: |
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
@@ -21,7 +21,7 @@ jobs:
           echo "Jenkins job URL for the branch $BRANCH_NAME is: $JENKINS_URL"
           echo "JENKINS_URL=${JENKINS_URL}" >> $GITHUB_ENV
 
-      # Paso 2: Ejecutar curl para disparar el job
+      # Step 2: Run curl to trigger the job
       - name: Trigger Jenkins Job
         run: |
           curl -X POST ${{ env.JENKINS_URL }} --user ${{ secrets.JENKINS_USERNAME }}:${{ secrets.JENKINS_API_TOKEN }}
