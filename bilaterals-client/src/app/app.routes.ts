@@ -3,10 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home'),
+    redirectTo: 'bilaterals',
+    pathMatch: 'full'
   },
   {
     path: 'bilaterals',
-    loadComponent: () => import('./pages/bilaterals/bilaterals'),
-  },
+    loadComponent: () => import('./pages/bilaterals/bilaterals')
+  }
 ];
